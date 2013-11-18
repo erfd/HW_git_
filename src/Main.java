@@ -6,6 +6,15 @@ public class Main {
     public static void main(String[] args) {
         //sout_hw();
         //list_A();
+        //reflection();
+        C<A> cint = new C<A>();
+        cint.setT(new AA());
+        System.out.println(cint.getT());
+        cint.setT(new AB());
+        System.out.println(cint.getT());
+    }
+
+    private static void reflection() {
         new B();
         new B2();
         Class c;// = null;
@@ -22,6 +31,7 @@ public class Main {
             System.out.println("not found");
         }
     }
+
     static void pr(Class cc)
     {
         System.out.println("name = " + cc.getName() +
@@ -42,6 +52,21 @@ public class Main {
         System.out.println("hw2");
         System.out.println("3");
         System.out.println("4");
+    }
+}
+
+class C<T>
+{
+    private T t;
+    T getT(){
+        return t;
+    }
+    void setT(T newT){
+        t = newT;
+    }
+    String sayMyName()
+    {
+        return t.toString();
     }
 }
 
@@ -69,7 +94,7 @@ abstract class A {
 
 class AA extends A {
     public String toString() {
-        return "AB";
+        return "AA";
     }
 }
 
