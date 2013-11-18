@@ -7,6 +7,12 @@ public class Main {
         //sout_hw();
         //list_A();
         //reflection();
+        //rtti();
+        D d = new D();
+        System.out.println(d.giveT(17));
+    }
+
+    private static void rtti() {
         C<A> cint = new C<A>();
         cint.setT(new AA());
         System.out.println(cint.getT());
@@ -52,6 +58,16 @@ public class Main {
         System.out.println("hw2");
         System.out.println("3");
         System.out.println("4");
+    }
+}
+
+class D
+{
+    //public final int i;
+    public <T> void giveT(T t)
+    {
+        System.out.println(T.getClass().getName());
+        return;
     }
 }
 
