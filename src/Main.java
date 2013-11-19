@@ -9,6 +9,7 @@ public class Main {
         //reflection();
         //rtti();
         D d = new D();
+        System.out.println("ALLO, YOBA");
         System.out.println(d.giveT(17));
     }
 
