@@ -1,4 +1,5 @@
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 public class Main {
 
@@ -7,22 +8,8 @@ public class Main {
         //list_A();
         //reflection();
         //rtti();
-        //funD();
-        //funE_410();
-    }
-
-    private static void funE_410() {
-        Map<String, Double> m = E.map();
-        m.put("str1", 1.5);
-        E.<String, Double>map();
-        List<String> l = E.makeList("1", "2");
-        System.out.println(l.toString());
-    }
-
-    private static void funD() {
         D d = new D();
-        d.giveT(17);
-        //System.out.println(d.giveT(17));
+        System.out.println(d.giveT(17));
     }
 
     private static void rtti() {
