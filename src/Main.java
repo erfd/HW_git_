@@ -1,5 +1,4 @@
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Main {
 
@@ -8,8 +7,22 @@ public class Main {
         //list_A();
         //reflection();
         //rtti();
+        //funD();
+        //funE_410();
+    }
+
+    private static void funE_410() {
+        Map<String, Double> m = E.map();
+        m.put("str1", 1.5);
+        E.<String, Double>map();
+        List<String> l = E.makeList("1", "2");
+        System.out.println(l.toString());
+    }
+
+    private static void funD() {
         D d = new D();
-        System.out.println(d.giveT(17));
+        d.giveT(17);
+        //System.out.println(d.giveT(17));
     }
 
     private static void rtti() {
@@ -29,7 +42,7 @@ public class Main {
             //c = Class.forName("BA");
             c = BA.class;
             pr(c);
-            for(Class face : c.getInterfaces())
+            for (Class face : c.getInterfaces())
                 pr(face);
             Class up = c.getSuperclass();
             pr(up);
@@ -38,10 +51,9 @@ public class Main {
         }
     }
 
-    static void pr(Class cc)
-    {
+    static void pr(Class cc) {
         System.out.println("name = " + cc.getName() +
-                " interface? [" + cc.isInterface() + "]" );
+                " interface? [" + cc.isInterface() + "]");
         System.out.println("sname = " + cc.getSimpleName());
         System.out.println("cano name = " + cc.getCanonicalName());
 
@@ -61,27 +73,40 @@ public class Main {
     }
 }
 
-class D
-{
+class E {
+    public static <K, V> Map<K, V> map() {
+        return new HashMap<K, V>();
+    }
+
+    public static <T> List<T> makeList(T ... args) {
+        List<T> lst = new ArrayList<T>();
+        for(T item : args)
+            lst.add(item);
+        return lst;
+    }
+}
+
+class D {
     //public final int i;
-    public <T> void giveT(T t)
+    public <T> void giveT(T t)  // 407 eckel
     {
-        System.out.println(T.getClass().getName());
+        System.out.println(t.getClass().getName());
         return;
     }
 }
 
-class C<T>
-{
+class C<T> {
     private T t;
-    T getT(){
+
+    T getT() {
         return t;
     }
-    void setT(T newT){
+
+    void setT(T newT) {
         t = newT;
     }
-    String sayMyName()
-    {
+
+    String sayMyName() {
         return t.toString();
     }
 }
@@ -91,9 +116,10 @@ class B {
         System.out.println("B");
     }
 }
-class BA extends B implements  i1
-{
-    BA(int i) {}
+
+class BA extends B implements i1 {
+    BA(int i) {
+    }
 }
 
 class B2 {
@@ -102,7 +128,8 @@ class B2 {
     }
 }
 
-interface  i1{}
+interface i1 {
+}
 
 abstract class A {
     abstract public String toString();
