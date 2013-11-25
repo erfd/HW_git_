@@ -1,5 +1,4 @@
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Main {
 
@@ -8,8 +7,13 @@ public class Main {
         //list_A();
         //reflection();
         //rtti();
+        //funD();
+        F<D> f = new F<D>(D.class); // eckel 413
+    }
+
+    private static void funD() {
         D d = new D();
-        System.out.println(d.giveT(17));
+        d.giveT(17);
     }
 
     private static void rtti() {
@@ -58,6 +62,19 @@ public class Main {
         System.out.println("3");
         System.out.println("4");
     }
+}
+
+class F<T>{
+    public F(Class type){ this.type = type; }
+    public T next(){
+        try {
+            return type.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+    private Class<T> type;
 }
 
 class E {
