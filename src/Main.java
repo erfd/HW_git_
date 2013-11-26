@@ -8,7 +8,15 @@ public class Main {
         //reflection();
         //rtti();
         //funD();
+        //funF();
+
+        // arrays here:
+
+    }
+
+    private static void funF() {
         F<D> f = new F<D>(D.class); // eckel 413
+        F f2 = F.create(A.class);
     }
 
     private static void funD() {
@@ -66,6 +74,9 @@ public class Main {
 
 class F<T>{
     public F(Class type){ this.type = type; }
+    public static <T>F<T> create(Class<T> type){
+        return new F<T>(type);
+    }
     public T next(){
         try {
             return type.newInstance();
